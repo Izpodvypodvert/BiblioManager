@@ -14,10 +14,8 @@ router_v1 = DefaultRouter()
 router_v1.register(r'books', BookViewSet)
 
 urlpatterns = [
-    path('v1/', include([
-        path('', include(router_v1.urls)),
-        path('register/', UserRegistrationView.as_view(), name='user-register'),
-    ])),
+    path('v1/', include(router_v1.urls)),
+    path('v1/register/', UserRegistrationView.as_view(), name='user-register'),
 ]
 
 schema_view = get_schema_view(
