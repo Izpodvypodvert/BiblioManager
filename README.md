@@ -54,7 +54,7 @@ EMAIL_HOST_USER=your_email@gmail.com
 EMAIL_HOST_PASSWORD=hxsf cmtn rnbn wwww
 ```
 
-## [Как настроить SMTP Server](https://www.youtube.com/watch?v=HFTesr_r_WI)
+#### [->Как настроить SMTP Server<-](https://www.youtube.com/watch?v=HFTesr_r_WI)
 
 3. Чтобы запустить приложение в Docker, используйте:
 
