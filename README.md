@@ -21,8 +21,6 @@ BiblioManager - это веб-приложение для управления �
 
 ### Предварительные требования
 
--   Python 3.10+
--   pip и virtualenv
 -   Docker
 -   Docker Compose
 
@@ -34,35 +32,50 @@ BiblioManager - это веб-приложение для управления �
     git clone git@github.com:Izpodvypodvert/BiblioManager.git
 ```
 
-2. Создайте и активируйте виртуальное окружение:
+2. Перед запуском приложения, создайте файл `.env` в корневой директории проекта:
 
-```sh
-    python3.10 -m venv venv
-    source venv/bin/activate
-    или
-    source venv/Scripts/activate на windows
+```env
+SECRET_KEY=django-insecure-nv)q55+n=o^4*%9xb1m7^oje#b^-5^u#ju9g^_nw)azi1nnmm$
+DEBUG=True
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+
+REDIS_URL=redis://redis:6379
+
+MYSQL_DATABASE=mydb
+MYSQL_USER=myuser
+MYSQL_PASSWORD=secret_password
+MYSQL_ROOT_PASSWORD=super_secret_password
+DB_HOST=db
+DB_PORT=3306
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=your_email@gmail.com
+EMAIL_HOST_PASSWORD=hxsf cmtn rnbn wwww
 ```
 
-3. Установите зависимости:
+## [Как настроить SMTP Server](https://www.youtube.com/watch?v=HFTesr_r_WI)
+
+3. Чтобы запустить приложение в Docker, используйте:
 
 ```sh
-pip install -r requirements.txt
+docker-compose up -d
 ```
 
-4. Запустите сервер разработки:
+4. Перейдите по адресу http://localhost:8000/api/swagger/ в вашем браузере.
+
+5. Чтобы остановить и удалить созданные контейнеры, используйте команду:
 
 ```sh
-python manage.py runserver
+docker-compose down
 ```
 
-5. Перейдите по адресу http://localhost:8000 в вашем браузере.
+### Запуск тестов с использованием Docker
 
-### Docker
-
-Чтобы запустить приложение в Docker, используйте:
+Чтобы запустить тесты в Docker, используйте:
 
 ```sh
-docker-compose up
+docker-compose run web pytest
 ```
 
 ## Документация API

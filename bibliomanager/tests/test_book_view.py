@@ -36,7 +36,8 @@ def test_create_book(api_client):
 @pytest.mark.django_db
 def test_update_book(api_client, create_book):
     """Проверка обновленния книги."""
-    url = reverse('api:book-detail', kwargs={'pk': 1})
+    book_id = create_book.id
+    url = reverse('api:book-detail', kwargs={'pk': book_id})
     updated_data = {'title': 'Обновленное название'}
     response = api_client.patch(url, updated_data, format='json')
     assert response.status_code == status.HTTP_200_OK  # type: ignore
@@ -45,6 +46,7 @@ def test_update_book(api_client, create_book):
 @pytest.mark.django_db
 def test_delete_book(api_client, create_book):
     """Проверка удаления книги."""
-    url = reverse('api:book-detail', kwargs={'pk': 1})
+    book_id = create_book.id
+    url = reverse('api:book-detail', kwargs={'pk': book_id})
     response = api_client.delete(url)
     assert response.status_code == status.HTTP_204_NO_CONTENT  # type: ignore

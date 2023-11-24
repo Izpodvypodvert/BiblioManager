@@ -1,7 +1,41 @@
 version: "3.8"
 
 services:
+    db:
+        image: mysql:8.2.0
+        volumes:
+            - mysql_data:/var/lib/mysql
+        env_file:
+            - .env
+
     redis:
-        image: redis:latest
+        image: redis:7.2
+    web:
+        build:
+            context: ./bibliomanager
+        env_file:
+            - .env
+        command: >
+            sh -c "/usr/bin/wait-for-it db:3306 &&
+                    python manage.py makemigrations && 
+                    python manage.py migrate &&
+                    python manage.py loaddata init_db_with_books.json &&
+                    python manage.py runserver 0.0.0.0:8000"
+        volumes:
+            - ./bibliomanager:/app
         ports:
-            - "6379:6379"
+            - "8000:8000"
+        depends_on:
+            - db
+            - redis
+
+    celery_worker:
+        build: ./bibliomanager
+        command: celery -A bibliomanager worker -l info
+        env_file:
+            - .env
+        depends_on:
+            - redis
+            - db
+volumes:
+    mysql_data:

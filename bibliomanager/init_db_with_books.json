@@ -1,0 +1,32 @@
+[
+    {
+        "model": "books.book",
+        "pk": 1,
+        "fields": {
+            "title": "Компьютерные сети",
+            "author": "Олиферы",
+            "publication_year": 2020,
+            "ISBN": "123-456-789-0"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 2,
+        "fields": {
+            "title": "Высоконагруженные приложения",
+            "author": "Kleppman Martin",
+            "publication_year": 2019,
+            "ISBN": "123-456-789-1"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 3,
+        "fields": {
+            "title": "Командная строка Линукс Руководство",
+            "author": "Уильям Шоттс",
+            "publication_year": 2018,
+            "ISBN": "123-456-789-2"
+        }
+    }
+]
