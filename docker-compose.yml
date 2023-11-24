@@ -13,6 +13,7 @@ services:
     web:
         build:
             context: ./bibliomanager
+        container_name: bibliomanager_web
         env_file:
             - .env
         command: >

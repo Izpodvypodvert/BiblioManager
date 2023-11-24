@@ -78,6 +78,12 @@ docker-compose down
 docker-compose run web pytest
 ```
 
+или если контейнеры запущены:
+
+```sh
+docker exec -it bibliomanager_web pytest
+```
+
 ## Документация API
 
 ### Обзор
