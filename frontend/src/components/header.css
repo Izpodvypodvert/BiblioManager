@@ -1,0 +1,30 @@
+.header {
+    background-color: #04aa6d;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-link {
+    margin-right: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.header-link:hover,
+.header-link:focus {
+    color: #ddd;
+}

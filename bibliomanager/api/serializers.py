@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from rest_framework import serializers
 
-from books.models import Book
+from books.models import Book, BookLoan
 
 
 User = get_user_model()
@@ -39,3 +39,28 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user.set_password(validated_data.get('password'))
         user.save()
         return user
+
+
+class BookLoanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BookLoan
+        fields = ['book', 'user', 'borrowed_date', 'return_date']
+        read_only_fields = ['user', 'borrowed_date']
+
+    def create(self, validated_data):
+        return BookLoan.objects.create(**validated_data)
+
+
+class UserBookLoanSerializer(serializers.ModelSerializer):
+    book_id = serializers.ReadOnlyField(source='book.id')
+    book_title = serializers.ReadOnlyField(source='book.title')
+    book_author = serializers.ReadOnlyField(source='book.author')
+    is_picked_up = serializers.SerializerMethodField()
+
+    class Meta:
+        model = BookLoan
+        fields = ['book_id', 'book_title', 'book_author',
+                  'borrowed_date', 'return_date', 'is_picked_up']
+
+    def get_is_picked_up(self, obj):
+        return obj.actual_borrowed_date is not None

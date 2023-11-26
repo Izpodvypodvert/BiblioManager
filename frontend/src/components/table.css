@@ -1,0 +1,48 @@
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td,
+table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04aa6d;
+    color: white;
+}
+
+.input-search {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.input-search:focus {
+    outline: none;
+    border-color: #04aa6d;
+    box-shadow: 0 0 8px rgba(4, 170, 109, 0.6);
+}
+
+.input-search::placeholder {
+    color: #aaa;
+}
