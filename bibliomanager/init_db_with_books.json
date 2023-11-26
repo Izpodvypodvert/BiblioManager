@@ -28,5 +28,75 @@
             "publication_year": 2018,
             "ISBN": "123-456-789-2"
         }
+    },
+    {
+        "model": "books.book",
+        "pk": 4,
+        "fields": {
+            "title": "Чистый код",
+            "author": "Роберт Мартин",
+            "publication_year": 1995,
+            "ISBN": "123-456-789-3"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 5,
+        "fields": {
+            "title": "Изучаем python",
+            "author": "Марк Лутц",
+            "publication_year": 2000,
+            "ISBN": "123-456-789-4"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 6,
+        "fields": {
+            "title": "Asyncio и конкурентное программирование на Python",
+            "author": "Мэттью Фаулер",
+            "publication_year": 2018,
+            "ISBN": "123-456-789-5"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 7,
+        "fields": {
+            "title": "Грокаем алгоритмы",
+            "author": "Адитья Бхаргава",
+            "publication_year": 2020,
+            "ISBN": "123-456-789-6"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 8,
+        "fields": {
+            "title": "Распределённые системы",
+            "author": "Эндрю С. Таненбаум, Мартен ван Стин",
+            "publication_year": 2019,
+            "ISBN": "123-456-789-7"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 9,
+        "fields": {
+            "title": "Типизированный Python для профессиональной разработки",
+            "author": "Алексей Голобурдин",
+            "publication_year": 2021,
+            "ISBN": "123-456-789-8"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 10,
+        "fields": {
+            "title": "Паттерны разработки на Python: TDD, DDD и событийно-ориентированная архитектура",
+            "author": "Гарри Персиваль и Боб Грегори",
+            "publication_year": 2021,
+            "ISBN": "123-456-789-9"
+        }
     }
 ]

@@ -13,7 +13,7 @@ services:
     web:
         build:
             context: ./bibliomanager
-        container_name: bibliomanager_web
+        container_name: bibliomanager_backend
         env_file:
             - .env
         command: >
@@ -21,7 +21,8 @@ services:
                     python manage.py makemigrations && 
                     python manage.py migrate &&
                     python manage.py loaddata init_db_with_books.json &&
-                    python manage.py runserver 0.0.0.0:8000"
+                    python manage.py runserver 0.0.0.0:8000 &&
+                    touch /tmp/web_ready"
         volumes:
             - ./bibliomanager:/app
         ports:
@@ -38,5 +39,25 @@ services:
         depends_on:
             - redis
             - db
+    celery_beat:
+        build: ./bibliomanager
+        command: >
+            sh -c "while [ ! -f /tmp/web_ready ]; do sleep 1; done &&
+                  celery -A bibliomanager beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler"
+        env_file:
+            - .env
+        depends_on:
+            - redis
+            - db
+            - web
+    frontend:
+        build: ./frontend
+        container_name: bibliomanager_frontend
+        volumes:
+            - ./frontend:/frontend
+        ports:
+            - "3000:3000"
+        depends_on:
+            - web
 volumes:
     mysql_data:

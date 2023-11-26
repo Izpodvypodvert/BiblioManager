@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 commands.txt
 .vscode/
+node_modules/
